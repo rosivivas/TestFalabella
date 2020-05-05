@@ -5,21 +5,21 @@ import com.rosario.testfalabella.data.model.IndicatorResponse
 
 class MapperIndicatorList : Mapper<IndicatorResponse, ArrayList<Indicator>>() {
 
-    override fun mapFrom(indicatorResponse: IndicatorResponse): ArrayList<Indicator> {
+    override fun mapFrom(from: IndicatorResponse): ArrayList<Indicator> {
 
         val itemList: ArrayList<Indicator> = ArrayList()
-        itemList.add(indicatorResponse.uf)
-        itemList.add(indicatorResponse.ivp)
-        itemList.add(indicatorResponse.dolar)
-        itemList.add(indicatorResponse.dolar_intercambio)
-        itemList.add(indicatorResponse.euro)
-        itemList.add(indicatorResponse.ipc)
-        itemList.add(indicatorResponse.utm)
-        itemList.add(indicatorResponse.imacec)
-        itemList.add(indicatorResponse.tpm)
-        itemList.add(indicatorResponse.libra_cobre)
-        itemList.add(indicatorResponse.tasa_desempleo)
-        itemList.add(indicatorResponse.bitcoin)
+        itemList.add(from.uf)
+        itemList.add(from.ivp)
+        itemList.add(from.dolar)
+        itemList.add(from.dolar_intercambio)
+        itemList.add(from.euro)
+        itemList.add(from.ipc)
+        itemList.add(from.utm)
+        itemList.add(from.imacec)
+        itemList.add(from.tpm)
+        itemList.add(from.libra_cobre)
+        itemList.add(from.tasa_desempleo)
+        itemList.add(from.bitcoin)
 
         return itemList
     }

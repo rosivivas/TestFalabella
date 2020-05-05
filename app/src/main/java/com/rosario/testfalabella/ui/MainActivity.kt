@@ -39,8 +39,7 @@ class MainActivity : AppCompatActivity() {
         binding.rvIndicators.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.rvIndicators.addItemDecoration(
-            DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
-        )
+            DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
         binding.rvIndicators.adapter = adapter
 
     }

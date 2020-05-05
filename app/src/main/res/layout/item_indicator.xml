@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:gravity="center_vertical"
-            android:text="@{String.valueOf(viewModel.indicator.valor)}"
+            android:text="@{viewModel.value}"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="parent"
