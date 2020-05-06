@@ -47,7 +47,7 @@ class MainViewModel @Inject constructor(
 
     private fun registerSuccess(result: IndicatorResponse?) {
         listData.postValue(MapperIndicatorList().mapFrom(result!!))
-        searchList = MapperIndicatorList().mapFrom(result!!)
+        searchList = MapperIndicatorList().mapFrom(result)
 
     }
 

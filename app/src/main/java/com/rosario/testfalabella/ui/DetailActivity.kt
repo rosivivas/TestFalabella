@@ -3,24 +3,36 @@ package com.rosario.testfalabella.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.databinding.DataBindingUtil
 import com.rosario.testfalabella.R
 import com.rosario.testfalabella.data.model.Indicator
+import com.rosario.testfalabella.databinding.ActivityDetailBinding
 import com.rosario.testfalabella.util.*
 import com.rosario.testfalabella.viewModel.DetailViewModel
+import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_detail.*
 import javax.inject.Inject
 
 class DetailActivity : AppCompatActivity() {
 
     private var indicator = Indicator()
+    private lateinit var binding: ActivityDetailBinding
 
     @Inject
     lateinit var viewModel: DetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+        initBinding()
         prepareElements()
+    }
+
+    private fun initBinding() {
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
     }
 
     private fun prepareElements() {
@@ -28,23 +40,7 @@ class DetailActivity : AppCompatActivity() {
 
         if (intent.hasExtra(INDICATOR)) {
             indicator = intent.getSerializableExtra(INDICATOR) as Indicator
-            loadData(indicator)
-        }
-    }
-
-    private fun loadData(indicator: Indicator){
-        title_name.text = indicator.nombre
-        value_code.text = indicator.codigo
-        value_unidad_medida.text = indicator.unidad_medida
-        value_date.text = Util().getDateFormat(indicator.fecha)
-        loadValue(indicator)
-    }
-
-    private fun loadValue(indicator: Indicator) {
-        when (indicator.unidad_medida) {
-            PESOS -> value_value.text = String.format(resources.getString(R.string.clp), indicator.valor.toString())
-            PERCENTAGE -> value_value.text = String.format(resources.getString(R.string.percentage), indicator.valor.toString())
-            DOLAR -> value_value.text = String.format(resources.getString(R.string.dolar), indicator.valor.toString())
+            viewModel.loadData(indicator)
         }
     }
 
