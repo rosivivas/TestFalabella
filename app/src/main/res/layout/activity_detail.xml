@@ -1,0 +1,114 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.DetailActivity">
+
+    <TextView
+        android:id="@+id/title_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text=""
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Nombre" />
+
+    <TextView
+        android:id="@+id/title_code"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="@string/code"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_name"
+        tools:text="@string/code" />
+
+    <TextView
+        android:id="@+id/value_code"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toEndOf="@+id/title_code"
+        app:layout_constraintTop_toBottomOf="@+id/title_name"
+        tools:text="Codigo Valor" />
+
+    <TextView
+        android:id="@+id/title_unidad_medida"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="@string/unit_measurement"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_code"
+        tools:text="@string/unit_measurement" />
+
+    <TextView
+        android:id="@+id/value_unidad_medida"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toEndOf="@+id/title_unidad_medida"
+        app:layout_constraintTop_toBottomOf="@+id/value_code"
+        tools:text="Valor" />
+
+    <TextView
+        android:id="@+id/title_date"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:text="@string/date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_unidad_medida"
+        tools:text="@string/date" />
+
+    <TextView
+        android:id="@+id/value_date"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toEndOf="@+id/title_date"
+        app:layout_constraintTop_toBottomOf="@+id/value_unidad_medida"
+        tools:text="Valor" />
+
+    <TextView
+        android:id="@+id/title_value"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:text="@string/value"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_date"
+        tools:text="unidad medida" />
+
+    <TextView
+        android:id="@+id/value_value"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toEndOf="@+id/title_value"
+        app:layout_constraintTop_toBottomOf="@+id/value_date"
+        tools:text="Valor" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

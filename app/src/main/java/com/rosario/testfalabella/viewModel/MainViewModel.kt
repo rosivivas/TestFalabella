@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.rosario.testfalabella.data.model.Indicator
 import com.rosario.testfalabella.data.model.IndicatorResponse
 import com.rosario.testfalabella.domain.IndicatorUseCase
@@ -18,7 +19,7 @@ import kotlin.collections.ArrayList
 class MainViewModel @Inject constructor(
     private val indicatorUseCase: IndicatorUseCase,
     private val context: Context
-) {
+): ViewModel() {
     val listData = MutableLiveData<ArrayList<Indicator>>()
     private lateinit var subscription: Disposable
     var progressBar = MutableLiveData<Int>().apply { postValue(View.GONE) }

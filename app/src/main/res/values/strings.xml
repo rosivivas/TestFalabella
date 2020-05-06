@@ -5,9 +5,16 @@
     <string name="login">Login</string>
     <string name="empty_field">Empty Field</string>
     <string name="invalid_credentials">Invalid Credentials</string>
-    <string name="title">Hola! %1$s</string>
+    <string name="title">Hello! %1$s</string>
     <string name="logout">Logout</string>
     <string name="logout_message">Are you sure you want to log out?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="code">Code</string>
+    <string name="unit_measurement">Unit of measurement</string>
+    <string name="date">Date</string>
+    <string name="value">Value</string>
+    <string name="clp">CLP $ %1$s</string>
+    <string name="percentage">%1$s %%</string>
+    <string name="dolar">USD $ %1$s</string>
 </resources>
