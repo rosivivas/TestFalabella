@@ -22,7 +22,6 @@ class MainViewModel @Inject constructor(
     var progressBar = MutableLiveData<Int>().apply { postValue(View.GONE) }
     var error = MutableLiveData<Throwable>()
 
-
     init {
         getIndicatorList()
     }

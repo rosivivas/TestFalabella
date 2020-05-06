@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Test Falabella</string>
+    <string name="email">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="empty_field">Empty Field</string>
+    <string name="invalid_credentials">Invalid Credentials</string>
+    <string name="title">Hola! %1$s</string>
 </resources>

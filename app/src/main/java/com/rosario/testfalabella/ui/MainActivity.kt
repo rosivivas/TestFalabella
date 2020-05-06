@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rosario.testfalabella.R
 import com.rosario.testfalabella.databinding.ActivityMainBinding
+import com.rosario.testfalabella.util.PreferenceManager
 import com.rosario.testfalabella.viewModel.MainViewModel
 import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -36,6 +38,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun prepareElements() {
+        tv_title.text = resources.getString(R.string.title, PreferenceManager(this).getUserName())
+
         binding.rvIndicators.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.rvIndicators.addItemDecoration(

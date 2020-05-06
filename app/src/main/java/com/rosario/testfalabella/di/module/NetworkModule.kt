@@ -6,7 +6,9 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.rosario.testfalabella.data.IndicatorApi
+import com.rosario.testfalabella.data.LocalRepo
 import com.rosario.testfalabella.util.BASE_URL
+import com.rosario.testfalabella.util.PreferenceManager
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers
@@ -36,6 +38,16 @@ class NetworkModule {
         return GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideSharedPreference(context: Context): PreferenceManager = PreferenceManager(context)
+
+    @Provides
+    @Singleton
+    fun provideLocalRepo(preferenceManager: PreferenceManager): LocalRepo {
+        return LocalRepo(preferenceManager)
     }
 
     @Provides
