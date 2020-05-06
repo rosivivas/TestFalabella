@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rosario.testfalabella.R
 import com.rosario.testfalabella.databinding.ActivityMainBinding
 import com.rosario.testfalabella.util.PreferenceManager
+import com.rosario.testfalabella.util.Util
 import com.rosario.testfalabella.viewModel.MainViewModel
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
@@ -37,6 +39,11 @@ class MainActivity : AppCompatActivity() {
         viewModelObserver()
     }
 
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.getIndicatorList()
+    }
+
     private fun initBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = mainViewModel
@@ -56,8 +63,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun viewModelObserver(){
         mainViewModel.listData.observe(this, Observer {
+            tv_error.visibility = View.GONE
+            rv_indicators.visibility = View.VISIBLE
             adapter.updateList(it)
         })
+
+        mainViewModel.error.observe(
+            this, Observer {
+                rv_indicators.visibility = View.GONE
+                tv_error.visibility = View.VISIBLE
+                tv_error.text = Util().handleError(it, this)
+            }
+        )
     }
 
 

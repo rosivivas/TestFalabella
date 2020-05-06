@@ -27,11 +27,7 @@ class MainViewModel @Inject constructor(
     var listIndicator = ArrayList<Indicator>()
     var searchList = ArrayList<Indicator>()
 
-    init {
-        getIndicatorList()
-    }
-
-    private fun getIndicatorList() {
+    fun getIndicatorList() {
         subscription = indicatorUseCase.getIndicators()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -50,8 +46,9 @@ class MainViewModel @Inject constructor(
     }
 
     private fun registerSuccess(result: IndicatorResponse?) {
+        listData.postValue(MapperIndicatorList().mapFrom(result!!))
         searchList = MapperIndicatorList().mapFrom(result!!)
-        listData.value = MapperIndicatorList().mapFrom(result!!)
+
     }
 
     private fun onError(result: Throwable) {

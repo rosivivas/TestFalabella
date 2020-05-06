@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Test Falabella</string>
+    <string name="email">Nombre de usuario</string>
+    <string name="password">Clave</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="empty_field">Campo vacío</string>
+    <string name="invalid_credentials">Credenciales inválidas</string>
+    <string name="title">Hola! %1$s</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="logout_message">¿Estás seguro que deseas cerrar sesión?</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="code">Código</string>
+    <string name="unit_measurement">Unidad de medida</string>
+    <string name="date">Fecha</string>
+    <string name="value">Valor</string>
+    <string name="clp">CLP $ %1$s</string>
+    <string name="percentage">%1$s %%</string>
+    <string name="dolar">USD $ %1$s</string>
+    <string name="error">Hay un error. Intenta más tarde</string>
+    <string name="error_500">Error interno</string>
+    <string name="error_401">No está autorizado</string>
+</resources>
