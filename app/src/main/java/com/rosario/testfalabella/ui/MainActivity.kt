@@ -1,7 +1,13 @@
 package com.rosario.testfalabella.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.SearchView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -54,5 +60,62 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_search_window, menu)
+
+        val myActionMenuItem: MenuItem = menu!!.findItem(R.id.search_window)
+        val searchView: SearchView = myActionMenuItem.actionView as SearchView
+
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                mainViewModel.filter(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                mainViewModel.filter(newText)
+                return true
+            }
+        })
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+            R.id.logout -> {
+                showAlertDialog()
+            }
+        }
+
+        return true
+    }
+
+    private fun logout(){
+        PreferenceManager(this).setIsLogged(false)
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun showAlertDialog(){
+        val builder = AlertDialog.Builder(this@MainActivity)
+        builder.setTitle(resources.getString(R.string.logout))
+        builder.setMessage(resources.getString(R.string.logout_message))
+        builder.setPositiveButton(resources.getString(R.string.yes)){_, _ ->
+            logout()
+        }
+        builder.setNegativeButton(resources.getString(R.string.no)){_, _ ->
+        }
+
+        val dialog: AlertDialog = builder.create()
+        // Display the alert dialog on app interface
+        dialog.show()
+    }
 
 }

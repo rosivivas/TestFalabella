@@ -11,7 +11,9 @@ import com.rosario.testfalabella.domain.mapper.MapperIndicatorList
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 class MainViewModel @Inject constructor(
     private val indicatorUseCase: IndicatorUseCase,
@@ -21,6 +23,8 @@ class MainViewModel @Inject constructor(
     private lateinit var subscription: Disposable
     var progressBar = MutableLiveData<Int>().apply { postValue(View.GONE) }
     var error = MutableLiveData<Throwable>()
+    var listIndicator = ArrayList<Indicator>()
+    var searchList = ArrayList<Indicator>()
 
     init {
         getIndicatorList()
@@ -45,11 +49,28 @@ class MainViewModel @Inject constructor(
     }
 
     private fun registerSuccess(result: IndicatorResponse?) {
+        searchList = MapperIndicatorList().mapFrom(result!!)
         listData.value = MapperIndicatorList().mapFrom(result!!)
     }
 
     private fun onError(result: Throwable) {
         error.value = result
+    }
+
+    fun filter(query: String) {
+        var search = query
+        search = search.toLowerCase(Locale.getDefault())
+        listIndicator.clear()
+        if (search.isEmpty()) {
+            listIndicator.addAll(searchList)
+        } else {
+            for (indicator in searchList) {
+                if (indicator.codigo.toLowerCase(Locale.getDefault()).contains(search)) {
+                    listIndicator.add(indicator)
+                }
+            }
+        }
+       listData.value = listIndicator
     }
 
 }

@@ -6,4 +6,8 @@
     <string name="empty_field">Empty Field</string>
     <string name="invalid_credentials">Invalid Credentials</string>
     <string name="title">Hola! %1$s</string>
+    <string name="logout">Logout</string>
+    <string name="logout_message">Are you sure you want to log out?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
